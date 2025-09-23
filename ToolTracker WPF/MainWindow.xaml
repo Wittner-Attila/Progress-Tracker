@@ -26,7 +26,7 @@
         <DockPanel>
             <Menu>
                 <MenuItem Header="Menu">
-                    <MenuItem Header="Games" Command="{Binding ShowGameViewCommand}" ></MenuItem>
+                    <MenuItem Header="Games" Command="{Binding ShowGameViewCommand}"></MenuItem>
                     <MenuItem Header="Tools" Command="{Binding ShowToolViewCommand}"></MenuItem>
                     <MenuItem Header="Levels" Command="{Binding ShowLevelViewCommand}"></MenuItem>
                 </MenuItem>
