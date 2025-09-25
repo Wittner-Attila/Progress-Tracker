@@ -24,6 +24,12 @@ public class Tool
 
     public void AddGame(Game game) => Games.Add(game);
 
+    public bool RemoveGame(Game game) => Games.Remove(game);
+
+    public void SetLevel(Level level) => Level = level;
+
+    public void ChangeName(string newName) => Name = newName;
+
     private string GamesString()
     {
         string gamesString = string.Empty;

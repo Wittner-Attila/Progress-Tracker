@@ -1,11 +1,11 @@
 ﻿namespace ToolTracker_WPF.Views;
 
 /// <summary>
-/// Interaction logic for LevelView.xaml
+/// Interaction logic for TitleView.xaml
 /// </summary>
-public partial class LevelView : UserControl
+public partial class TitleView : UserControl
 {
-    public LevelView()
+    public TitleView()
     {
         InitializeComponent();
     }

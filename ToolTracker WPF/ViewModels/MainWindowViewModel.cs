@@ -5,30 +5,22 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly GameViewModel _gameViewModel = new GameViewModel();
     private readonly LevelViewModel _levelViewModel = new LevelViewModel();
     private readonly ToolViewModel _toolViewModel = new ToolViewModel();
+    private readonly TitleViewModel _titleViewModel = new TitleViewModel();
 
     [ObservableProperty]
     public object _currentView = new object();
 
     public MainWindowViewModel()
     {
-        _currentView = _gameViewModel;
+        _currentView = _titleViewModel;
     }
 
     [RelayCommand]
-    private void ShowGameView()
-    {
-        CurrentView = _gameViewModel;
-    }
+    private void ShowGameView() => CurrentView = _gameViewModel;
 
     [RelayCommand]
-    private void ShowLevelView()
-    {
-        CurrentView = _levelViewModel;
-    }
+    private void ShowLevelView() => CurrentView = _levelViewModel;
 
     [RelayCommand]
-    private void ShowToolView()
-    {
-        CurrentView = _toolViewModel;
-    }
+    private void ShowToolView() => CurrentView = _toolViewModel;
 }

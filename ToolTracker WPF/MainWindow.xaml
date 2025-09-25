@@ -11,6 +11,9 @@
     <Window.DataContext>
         <viewmodel:MainWindowViewModel />
     </Window.DataContext>
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/Images/title.jpg" Stretch="UniformToFill" />
+    </Window.Background>
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodel:ToolViewModel}">
             <view:ToolView />
@@ -21,17 +24,23 @@
         <DataTemplate DataType="{x:Type viewmodel:GameViewModel}">
             <view:GameView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodel:TitleViewModel}">
+            <view:TitleView/>
+        </DataTemplate>
     </Window.Resources>
     <StackPanel>
         <DockPanel>
-            <Menu>
-                <MenuItem Header="Menu">
-                    <MenuItem Header="Games" Command="{Binding ShowGameViewCommand}"></MenuItem>
-                    <MenuItem Header="Tools" Command="{Binding ShowToolViewCommand}"></MenuItem>
-                    <MenuItem Header="Levels" Command="{Binding ShowLevelViewCommand}"></MenuItem>
-                </MenuItem>
+            <Menu HorizontalAlignment="Center" Margin="0,0,0,20">
+                <Menu.Background>
+                    <SolidColorBrush Opacity="0"/>
+                </Menu.Background>
+                <MenuItem Header="Games" Command="{Binding ShowGameViewCommand}" Padding="10,10,10,10" Background="White" />
+                <Separator Visibility="Hidden"/>
+                <MenuItem Header="Tools" Command="{Binding ShowToolViewCommand}" Padding="10,10,10,10" Background="White"/>
+                <Separator Visibility="Hidden"/>
+                <MenuItem Header="Levels" Command="{Binding ShowLevelViewCommand}" Padding="10,10,10,10" Background="White"/>
             </Menu>
         </DockPanel>
-        <ContentControl Content="{Binding CurrentView}" />
+        <ContentControl Content="{Binding CurrentView}"/>
     </StackPanel>
 </Window>

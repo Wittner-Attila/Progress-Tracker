@@ -15,6 +15,10 @@ public class Level
         LevelNumber = levelNumber;
     }
 
+    public void ChangeName(string newName) => Name = newName;
+
+    public void ChangeLevelNumber(int levelNumber) => LevelNumber = levelNumber;
+
     public override string ToString()
     {
         return $"{this.Name} -> {this.LevelNumber}";
