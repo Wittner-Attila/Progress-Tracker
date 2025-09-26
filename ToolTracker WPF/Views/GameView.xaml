@@ -5,26 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ToolTracker_WPF.Views"
              mc:Ignorable="d"  
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource BackgroundDarkBrush}">
 
-        <ItemsControl ItemsSource="{Binding Games}" RenderTransformOrigin="0.5,0.5">
+    <StackPanel Margin="20">
 
+        <TextBlock Text="Games" Style="{StaticResource HeaderText}" Margin="0,0,0,20"/>
+
+        <ItemsControl ItemsSource="{Binding Games}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate >
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <Button Content="{Binding Name}" Command="{Binding DataContext.ViewGameCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding .}"/>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="8">
+                        <Button Content="{Binding Name}"
+                                Command="{Binding DataContext.ViewGameCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding .}"
+                                Style="{StaticResource PillButton}"
+                                MinWidth="140"
+                                MinHeight="50"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
         </ItemsControl>
-        
+
     </StackPanel>
 </UserControl>

@@ -4,6 +4,161 @@
              xmlns:local="clr-namespace:ToolTracker_WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+
+            <!-- Colors -->
+            <Color x:Key="PrimaryColor">#33D4B9</Color>
+            <Color x:Key="AccentColor">#B6FFD7</Color>
+            <Color x:Key="DarkGreen">#183C2B</Color>
+            <Color x:Key="DarkGray">#232526</Color>
+            <Color x:Key="BackgroundDark">#191B1C</Color>
+            <Color x:Key="LightTextColor">#F0F0F0</Color>
+            <Color x:Key="SubtleTextColor">#B0B0B0</Color>
+
+            <!-- Brushes -->
+            <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+            <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+            <SolidColorBrush x:Key="DarkGreenBrush" Color="{StaticResource DarkGreen}"/>
+            <SolidColorBrush x:Key="DarkGrayBrush" Color="{StaticResource DarkGray}"/>
+            <SolidColorBrush x:Key="BackgroundDarkBrush" Color="{StaticResource BackgroundDark}"/>
+            <SolidColorBrush x:Key="LightTextBrush" Color="{StaticResource LightTextColor}"/>
+            <SolidColorBrush x:Key="SubtleTextBrush" Color="{StaticResource SubtleTextColor}"/>
+            <SolidColorBrush x:Key="WhiteBrush" Color="White"/>
+
+            <!-- Window Style -->
+            <Style TargetType="Window">
+                <Setter Property="Background" Value="{StaticResource BackgroundDarkBrush}" />
+            </Style>
+
+            <!-- TextBlock Styles -->
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+
+            <Style x:Key="HeaderText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="ExtraBold"/>
+                <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+            </Style>
+
+            <Style x:Key="SubHeaderText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+            </Style>
+
+            <Style x:Key="BodyText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Foreground" Value="{StaticResource LightTextBrush}"/>
+            </Style>
+
+            <!-- ListBox Style -->
+            <Style TargetType="ListBox">
+                <Setter Property="Background" Value="{StaticResource DarkGrayBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="5"/>
+            </Style>
+
+            <!-- ListBoxItem Style -->
+            <Style TargetType="ListBoxItem">
+                <Setter Property="Padding" Value="6"/>
+                <Setter Property="Margin" Value="3"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="3">
+                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="Bd" Property="Background" Value="{StaticResource PrimaryBrush}"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bd" Property="Background" Value="{StaticResource AccentBrush}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Updated Menu Style: Bigger, Dark Green Background -->
+            <Style TargetType="Menu">
+                <Setter Property="Background" Value="{StaticResource DarkGreenBrush}" />
+                <Setter Property="Foreground" Value="{StaticResource LightTextBrush}" />
+                <Setter Property="FontSize" Value="16" />
+                <!-- Larger font -->
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Padding" Value="12,8" />
+                <!-- Larger padding -->
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Style>
+
+            <!-- Updated MenuItem Style: Larger with background on hover -->
+            <Style TargetType="MenuItem">
+                <Setter Property="Foreground" Value="{StaticResource LightTextBrush}" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="FontSize" Value="16" />
+                <!-- Larger font -->
+                <Setter Property="Padding" Value="14,8" />
+                <!-- Larger padding -->
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="MenuItem">
+                            <Border Background="{TemplateBinding Background}" Padding="2,0">
+                                <ContentPresenter ContentSource="Header" Margin="5" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
+                                    <Setter Property="Background" Value="{StaticResource DarkGrayBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Updated PillButton Style: Bigger pill shape -->
+            <Style x:Key="PillButton" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+                <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Padding" Value="18,12" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                SnapsToDevicePixels="True">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+                        <Setter Property="Foreground" Value="White" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
